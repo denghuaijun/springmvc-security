@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>security</artifactId>
+        <groupId>com.dhj.security</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>springmvc-session-security</artifactId>
+    <packaging>war</packaging>
+
+<dependencies>
+    <!--添加mvc依赖 -->
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-webmvc</artifactId>
+        <version>5.3.4</version>
+    </dependency>
+    <!-- 添加servlet依赖 -->
+    <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>javax.servlet-api</artifactId>
+        <version>4.0.1</version>
+        <scope>provided</scope>
+    </dependency>
+</dependencies>
+    <!--以下为对应插件 -->
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <pluginManagement>
+            <plugins>
+                <!--tomcat插件 -->
+                <!-- <plugin>
+                     <groupId>org.apache.tomcat.maven</groupId>
+                     <artifactId>common-tomcat-maven-plugin</artifactId>
+                     <version>2.2</version>
+                 </plugin>-->
+                <!--maven编译插件 -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.8.1</version>
+                    <configuration>
+                        <source>${maven.compiler.source}</source>
+                        <target>${maven.compiler.target}</target>
+                    </configuration>
+                </plugin>
+                <!--resource资源包打包插件 -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>3.2.0</version>
+                    <configuration>
+                        <encoding>${project.build.sourceEncoding}</encoding>
+                        <useDefaultDelimiters>true</useDefaultDelimiters>
+                        <resources>
+                            <resource>
+                                <directory>src/main/resources</directory>
+                                <filtering>true</filtering>
+                                <includes>
+                                    <include>**/*</include>
+                                </includes>
+                            </resource>
+                            <resource>
+                                <directory>src/main/java</directory>
+                                <includes>
+                                    <include>**/*.xml</include>
+                                </includes>
+                            </resource>
+                        </resources>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+</project>
